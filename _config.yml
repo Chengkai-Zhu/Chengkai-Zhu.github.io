@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Chengkai Zhu (朱成开)"
+title                    : "CK"
 title_separator          : "-"
 name                     : &name "Chengkai Zhu"
 description              : &description "personal description"
@@ -23,7 +23,7 @@ repository               : "academicpages/academicpages.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : # "Chengkai Zhu"
+  name             : "Chengkai Zhu (朱成开)"
   pronouns         : # example: "he/his"  
   bio              : "Short biography for the left-hand sidebar"
   location         : "Guangzhou"
