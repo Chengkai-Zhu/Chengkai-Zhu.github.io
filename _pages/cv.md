@@ -11,9 +11,9 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* Ph.D in Artificial Intelligence, The Hong Kong University of Science and Technology (GZ), 2026 (expected)
+* M.S. in Cyber Security, University of Chinese Academy of Sciences, 2020-2023
+* B.S. in Mathematics and Applied Mathematics, China Agricultrual University, 2016-2020
 
 Work experience
 ======
