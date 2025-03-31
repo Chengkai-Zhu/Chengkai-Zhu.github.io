@@ -2,7 +2,7 @@
 title: "Exponential hardness of optimization from the locality in quantum neural networks"
 collection: publications
 category: conferences
-permalink: /publication/2024-02-17-paper-title-number-4
+permalink: /publication/24-QNN
 date: 2024-03-24
 venue: 'AAAI 2024'
 paperurl: 'https://ojs.aaai.org/index.php/AAAI/article/view/29614'
