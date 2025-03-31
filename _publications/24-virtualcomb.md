@@ -2,7 +2,7 @@
 title: "Reversing unknown quantum processes via virtual combs for channels with limited information"
 collection: publications
 category: manuscripts
-permalink: /publication/2009-10-01-paper-title-number-1
+permalink: /publication/24-virtualcomb
 date: 2024-07-19
 venue: 'Physical Review Letters'
 paperurl: 'https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.133.030801'
