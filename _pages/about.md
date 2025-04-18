@@ -19,7 +19,7 @@ Previously I obtained my M.Sc. in Cyber security supervised by [Prof. Zhenyu Hua
   <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.133.030801" style="text-decoration: none;">*Physical Review Letters 133, 030801 (2024)*</a> & TQC 2024 <a href="https://arxiv.org/abs/2401.04672" style="text-decoration: none;">*[arXiv:2403.09519]*</a>
 - **Limitations of Classically-Simulable Measurements for Quantum State Discrimination**\
   **Chengkai Zhu**, Zhiping Liu, Chenghong Zhu, and Xin Wang\
-  <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.133.010202" style="text-decoration: none;">*Physical Review Letters 133, 010202 (2024)*</a>
+  <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.133.010202" style="text-decoration: none;">*Physical Review Letters 133, 010202 (2024)*</a>,
   <a href="https://arxiv.org/abs/2310.11323" style="text-decoration: none;">*[arXiv:2310.11323]*</a>
 - **Estimate Distillable Entanglement and Quantum Capacity by Squeezing Useless Entanglement**\
   **Chengkai Zhu**, Chenghong Zhu, and Xin Wang\
