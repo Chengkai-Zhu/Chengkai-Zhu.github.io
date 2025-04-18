@@ -12,7 +12,7 @@ I am a PhD student supervised by [Prof. Xin Wang](https://www.xinwang.info/) at 
 
 Previously I obtained my M.Sc. in Cyber security supervised by [Prof. Zhenyu Huang](https://scholar.google.com/citations?user=omCIQ64AAAAJ&hl=zh-CN) at the University of Chinese Academy of Sciences and my B.Sc. in Mathematics at Applied Mathematics at China Agricultural University.
 
-## Selected Publications (See <a href="https://scholar.google.com/citations?user=2c0ZBk8AAAAJ&hl=zh-CN&oi=ao" style="text-decoration: none;">Google Scholar</a> for the Full List)
+## Selected Publications (see <a href="https://scholar.google.com/citations?user=2c0ZBk8AAAAJ&hl=zh-CN&oi=ao" style="text-decoration: none;">Google Scholar</a> for the full list)
 
 - **Reversing Unknown Quantum Processes via Virtual Combs for Channels with Limited Information** \
   **Chengkai Zhu**, Yin Mo, Yu-Ao Chen, and Xin Wang\
