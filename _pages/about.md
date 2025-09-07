@@ -10,7 +10,7 @@ redirect_from:
 
 I am a PhD student supervised by [Prof. Xin Wang](https://www.xinwang.info/) at [QuAIR Lab](https://www.quair.group/people/) from [Information Hub](https://infh.hkust-gz.edu.cn/), [The Hong Kong University of Science and Technology (Guangzhou)](https://hkust-gz.edu.cn/). My research interests include quantum information theory and quantum resources.
 
-Previously, I obtained my M.Sc. in Cyber security supervised by [Prof. Zhenyu Huang](https://scholar.google.com/citations?user=omCIQ64AAAAJ&hl=zh-CN) at the University of Chinese Academy of Sciences and my B.Sc. in Mathematics at Applied Mathematics at China Agricultural University.
+Previously, I obtained my M.Sc. in Cyber security supervised by [Prof. Zhenyu Huang](https://people.ucas.ac.cn/~huangzhenyu) at the University of Chinese Academy of Sciences and my B.Sc. in Mathematics at Applied Mathematics at China Agricultural University.
 
 ## Selected Publications (See <a href="https://scholar.google.com/citations?user=2c0ZBk8AAAAJ&hl=zh-CN&oi=ao" style="text-decoration: none;">Google Scholar</a> for the Full List)
 
