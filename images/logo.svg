@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revised 'CZ' Monogram Logo</title>
+<style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; padding: 20px; color: #333; background-color: #f8f9fa; }
+    .logo-container { display: flex; flex-direction: column; gap: 40px; max-width: 600px; margin: 0 auto; }
+    .logo-option { border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; background-color: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .logo-option h3 { margin-top: 0; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
+    .preview { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 24px; font-weight: 500; color: #333; flex-wrap: wrap; }
+    .logo-svg { width: 48px; height: 48px; flex-shrink: 0; }
+    .dark-preview { background-color: #1a1a1a; padding: 20px; border-radius: 8px; margin-top: 15px; }
+    .dark-preview .preview { color: #fff; }
+    .code-block { background-color: #f4f4f7; border-radius: 4px; padding: 15px; margin-top: 20px; white-space: pre-wrap; word-wrap: break-word; font-family: "Courier New", Courier, monospace; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="logo-container">
+
+    <!-- Revised Option 1: Geometric Enclosure with Solid Z -->
+    <div class="logo-option">
+        <h3>Revised: Geometric Enclosure (Solid Z)</h3>
+        <p>The "Z" is now a solid, substantial shape. This creates a more balanced and powerful monogram where both letters are clearly defined.</p>
+        <div class="preview">
+            <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#2c3e50">
+                <path d="M80,15 A40,40 0 1,0 80,85 L68,85 A28,28 0 1,1 68,15 Z"/>
+                <path d="M30,30 L70,30 L70,38 L38,38 L70,62 L70,70 L30,70 L30,62 L62,62 L30,38 L30,30 Z"/>
+            </svg>
+            <span>chengkaizhu.site</span>
+        </div>
+        <div class="dark-preview">
+            <div class="preview">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF">
+                    <path d="M80,15 A40,40 0 1,0 80,85 L68,85 A28,28 0 1,1 68,15 Z"/>
+                    <path d="M30,30 L70,30 L70,38 L38,38 L70,62 L70,70 L30,70 L30,62 L62,62 L30,38 L30,30 Z"/>
+                </svg>
+                <span>Preview on Dark</span>
+            </div>
+        </div>
+        <p style="margin-top: 20px;"><strong>SVG Code:</strong></p>
+        <div class="code-block">
+&lt;svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#2c3e50"&gt;
+  &lt;!-- The 'C' shape, slightly adjusted for balance --&gt;
+  &lt;path d="M80,15 A40,40 0 1,0 80,85 L68,85 A28,28 0 1,1 68,15 Z"/&gt;
+  &lt;!-- The new, solid 'Z' shape --&gt;
+  &lt;path d="M30,30 L70,30 L70,38 L38,38 L70,62 L70,70 L30,70 L30,62 L62,62 L30,38 L30,30 Z"/&gt;
+&lt;/svg&gt;
+        </div>
+    </div>
+
+    <!-- Alternative: The Integrated Z (Negative Space) -->
+    <div class="logo-option">
+        <h3>Alternative: The Integrated Z (Negative Space)</h3>
+        <p>A more creative take. Here, the solid "Z" shape is used to "cut out" the center of the "C", creating the monogram from a single, unified piece.</p>
+        <div class="preview">
+            <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" fill="#2c3e50">
+                <path d="M80,15 A40,40 0 1,0 80,85 L68,85 A28,28 0 1,1 68,15 Z M30,30 L30,38 L62,38 L30,62 L30,70 L70,70 L70,62 L38,62 L70,38 L70,30 Z"/>
+            </svg>
+            <span>chengkaizhu.site</span>
+        </div>
+        <div class="dark-preview">
+            <div class="preview">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" fill="#FFFFFF">
+                     <path d="M80,15 A40,40 0 1,0 80,85 L68,85 A28,28 0 1,1 68,15 Z M30,30 L30,38 L62,38 L30,62 L30,70 L70,70 L70,62 L38,62 L70,38 L70,30 Z"/>
+                </svg>
+                <span>Preview on Dark</span>
+            </div>
+        </div>
+        <p style="margin-top: 20px;"><strong>SVG Code:</strong></p>
+        <div class="code-block">
+&lt;svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" fill="#2c3e50"&gt;
+  &lt;!-- A single path defines the 'C' and then the 'Z' cutout. 'fill-rule: evenodd' makes the inner shape a hole. --&gt;
+  &lt;path d="M80,15 A40,40 0 1,0 80,85 L68,85 A28,28 0 1,1 68,15 Z M30,30 L30,38 L62,38 L30,62 L30,70 L70,70 L70,62 L38,62 L70,38 L70,30 Z"/&gt;
+&lt;/svg&gt;
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
