@@ -15,7 +15,7 @@ from datetime import date, datetime, timezone
 
 from bs4 import BeautifulSoup
 
-from common import ROOT, arxiv_id, is_first_author, load_json, merge_publications, normalize, validate_publication, write_json
+from common import ROOT, arxiv_id, filter_publications, is_excluded, is_first_author, load_json, merge_publications, normalize, validate_publication, write_json
 
 ATOM = {"a": "http://www.w3.org/2005/Atom", "arxiv": "http://arxiv.org/schemas/atom", "o": "http://a9.com/-/spec/opensearch/1.1/"}
 
@@ -215,7 +215,7 @@ def scholar_publication(detail, known):
     return paper
 
 
-def sync(client, profile, existing, curated):
+def sync(client, profile, existing, curated, exclusions=()):
     status, incoming, pending = {}, [], []
     try:
         incoming = fetch_arxiv(client, profile)
@@ -226,6 +226,8 @@ def sync(client, profile, existing, curated):
         scholar = fetch_scholar(client, profile)
         known = merge_publications(merge_publications(existing, incoming), curated)
         for detail in scholar:
+            if is_excluded(detail, exclusions):
+                continue
             try:
                 incoming = merge_publications(incoming, [scholar_publication(detail, known)])
             except ValueError as exc:
@@ -237,7 +239,7 @@ def sync(client, profile, existing, curated):
         raise SourceError("All sources failed. Existing publication files were left untouched. " + " ".join(source["reason"] for source in status.values()))
     # Use all existing records as a safety net when a source temporarily loses entries.
     papers = merge_publications(existing, incoming)
-    papers = [p for p in papers if is_first_author(p["authors"], profile["author_aliases"])]
+    papers = filter_publications([p for p in papers if is_first_author(p["authors"], profile["author_aliases"])], exclusions)
     report = {"checked_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "sources": status, "pending": pending, "synced_first_author_papers": len(papers)}
     return papers, report
 
@@ -248,7 +250,7 @@ def run():
     args = parser.parse_args()
     profile = load_json(ROOT / "data/profile.json")
     try:
-        papers, report = sync(Client(profile["email"]), profile, load_json(ROOT / "data/synced_publications.json"), load_json(ROOT / "data/publications.json"))
+        papers, report = sync(Client(profile["email"]), profile, load_json(ROOT / "data/synced_publications.json"), load_json(ROOT / "data/publications.json"), load_json(ROOT / "data/publication_exclusions.json"))
     except SourceError as exc:
         print(f"::error::{exc}", file=sys.stderr)
         return 1

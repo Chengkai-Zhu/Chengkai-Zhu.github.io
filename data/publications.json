@@ -36,20 +36,6 @@
     "pdf_url": "https://arxiv.org/pdf/2607.24693"
   },
   {
-    "title": "Entanglement cost of bipartite quantum channel discrimination under positive partial transpose operations",
-    "authors": [
-      "Chengkai Zhu",
-      "Shuyu He",
-      "Gereon Koßmann",
-      "Xin Wang"
-    ],
-    "date": "2026-03-12",
-    "venue": "arXiv:2603.12130 (2026)",
-    "kind": "preprint",
-    "abstract_url": "https://arxiv.org/abs/2603.12130",
-    "pdf_url": "https://arxiv.org/pdf/2603.12130"
-  },
-  {
     "title": "Simulation of Adjoints and Petz Recovery Maps for Unknown Quantum Channels",
     "authors": [
       "Chengkai Zhu",
@@ -109,36 +95,6 @@
     "kind": "published",
     "abstract_url": "https://arxiv.org/abs/2408.02506",
     "pdf_url": "https://arxiv.org/pdf/2408.02506"
-  },
-  {
-    "title": "Riemannian Optimization for Holevo Capacity",
-    "authors": [
-      "Chengkai Zhu",
-      "Renfeng Peng",
-      "Bin Gao",
-      "Xin Wang"
-    ],
-    "date": "2025-01-20",
-    "venue": "ISIT 2025 · arXiv:2501.11576",
-    "kind": "published",
-    "abstract_url": "https://arxiv.org/abs/2501.11576",
-    "pdf_url": "https://arxiv.org/pdf/2501.11576"
-  },
-  {
-    "title": "Amortized Stabilizer Rényi Entropy of Quantum Dynamics",
-    "authors": [
-      "Chengkai Zhu",
-      "Yu-Ao Chen",
-      "Zanqiu Shen",
-      "Zhiping Liu",
-      "Zhan Yu",
-      "Xin Wang"
-    ],
-    "date": "2024-09-10",
-    "venue": "arXiv:2409.06659 (2024)",
-    "kind": "preprint",
-    "abstract_url": "https://arxiv.org/abs/2409.06659",
-    "pdf_url": "https://arxiv.org/pdf/2409.06659"
   },
   {
     "title": "Reversing Unknown Quantum Processes via Virtual Combs for Channels with Limited Information",

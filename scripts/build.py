@@ -36,8 +36,10 @@ def publication_list(papers, profile):
         entries.append(
             '<li class="publication"><article>'
             f'<h3>{esc(paper["title"])}</h3>'
+            '<div class="publication-meta">'
             f'<p class="publication-authors">{authors}</p>'
             f'<p class="publication-venue">{esc(paper["venue"])}</p>'
+            '</div>'
             f'<div class="publication-links">{"".join(links)}</div>'
             '</article></li>'
         )

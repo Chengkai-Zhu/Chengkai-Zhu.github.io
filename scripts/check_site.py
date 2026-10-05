@@ -28,6 +28,7 @@ class Document(HTMLParser):
 
 
 def check_site(output):
+    output = Path(output).resolve()
     publications()
     pages = {path.resolve(): Document(path.read_text(encoding="utf-8")) for path in output.rglob("*.html")}
     errors = []

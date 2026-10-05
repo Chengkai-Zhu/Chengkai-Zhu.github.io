@@ -9,7 +9,7 @@ from unittest.mock import Mock, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from common import arxiv_id, is_first_author, merge_publications, validate_publication
+from common import arxiv_id, filter_publications, is_first_author, merge_publications, validate_publication
 from sync_publications import SourceError, parse_arxiv, parse_scholar_detail, parse_scholar_profile, scholar_get, scholar_publication, sync
 from build import build, publication_list
 from check_site import check_site
@@ -79,6 +79,24 @@ class PublicationTests(unittest.TestCase):
     def test_previous_papers_are_not_lost(self):
         old = paper(title="An older work", abstract_url="https://arxiv.org/abs/2401.12345", date="2024-01-01")
         self.assertEqual(len(merge_publications([old], [paper()])), 2)
+
+    def test_exclusions_survive_title_and_arxiv_version_changes(self):
+        exclusions = [{"title": "Amortized Stabilizer Rényi Entropy", "arxiv_id": "2409.06659"}]
+        by_title = paper(title="AMORTIZED STABILIZER RENYI ENTROPY")
+        by_identifier = paper(title="A renamed journal version", abstract_url="https://arxiv.org/abs/2409.06659v3")
+        kept = paper(title="A different paper")
+        self.assertEqual(filter_publications([by_title, by_identifier, kept], exclusions), [kept])
+
+    def test_monthly_sync_cannot_restore_excluded_records(self):
+        removed = paper(title="An omitted paper")
+        kept = paper(title="Another paper", abstract_url="https://arxiv.org/abs/2609.54321", pdf_url="https://arxiv.org/pdf/2609.54321")
+        exclusions = [{"title": removed["title"], "arxiv_id": "2609.12345"}]
+        detail = {"title": "A renamed version", "authors": removed["authors"], "links": [removed["abstract_url"]]}
+        with patch("sync_publications.fetch_arxiv", return_value=[removed, kept]), patch("sync_publications.fetch_scholar", return_value=[detail]):
+            records, status = sync(None, PROFILE, [removed], [], exclusions)
+        self.assertEqual(records, [kept])
+        self.assertEqual(status["synced_first_author_papers"], 1)
+        self.assertEqual(status["pending"], [])
 
     def test_scholar_detects_blocked_or_wrong_profile(self):
         for document in ("<html>captcha</html>", '<div id="gsc_prf_in">Someone else</div>'):

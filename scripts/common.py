@@ -28,6 +28,21 @@ def arxiv_id(url):
     return match.group(1) if match else None
 
 
+def is_excluded(paper, exclusions):
+    links = [paper.get(key, "") for key in ("abstract_url", "pdf_url")] + paper.get("links", [])
+    identifiers = {arxiv_id(url) for url in links} - {None}
+    return any(
+        (item.get("title") and normalize(paper["title"]) == normalize(item["title"]))
+        or (item.get("arxiv_id") and item["arxiv_id"] in identifiers)
+        for item in exclusions
+    )
+
+
+def filter_publications(papers, exclusions):
+    """Keep intentionally omitted papers out of both builds and future syncs."""
+    return [paper for paper in papers if not is_excluded(paper, exclusions)]
+
+
 def validate_publication(paper):
     for field in ("title", "authors", "date", "venue", "abstract_url", "pdf_url"):
         if not paper.get(field):
@@ -66,7 +81,10 @@ def publications():
     if any(not is_first_author(p.get("authors"), profile["author_aliases"]) for p in synced):
         raise ValueError("Automatically synced data contains a non-first-author paper.")
     # Curated metadata overrides automatic metadata, including publication dates.
-    papers = merge_publications(synced, load_json(ROOT / "data/publications.json"))
+    papers = filter_publications(
+        merge_publications(synced, load_json(ROOT / "data/publications.json")),
+        load_json(ROOT / "data/publication_exclusions.json"),
+    )
     for paper in papers:
         validate_publication(paper)
     return papers
