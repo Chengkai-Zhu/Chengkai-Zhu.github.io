@@ -1,0 +1,88 @@
+name: Build and deploy homepage
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+    inputs:
+      sync_publications:
+        description: Update first-author publications before deployment
+        type: boolean
+        default: false
+  schedule:
+    # Run on the first day of each month at 09:17 China Standard Time.
+    - cron: '17 1 1 * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: homepage-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install sync dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run validation
+        run: python -m unittest discover -s tests -v
+      - name: Sync first-author publications
+        if: github.ref == 'refs/heads/master' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.sync_publications))
+        env:
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
+        run: python scripts/sync_publications.py
+      - name: Build static website
+        run: python scripts/build.py
+      - name: Check links and publication data
+        run: python scripts/check_site.py
+      - name: Save monthly publication update
+        if: github.ref == 'refs/heads/master' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.sync_publications))
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/synced_publications.json data/sync_status.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update first-author publications from Google Scholar and arXiv"
+            git push origin HEAD:master
+          fi
+      - name: Upload website for review
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: homepage-preview
+          path: _site/
+          include-hidden-files: true
+      - name: Upload Pages artifact
+        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site/
+
+  deploy:
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

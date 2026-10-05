@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>$title</title>
+  <meta name="description" content="$description">
+  <link rel="canonical" href="$canonical">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="$title">
+  <meta property="og:description" content="$description">
+  <meta property="og:url" content="$canonical">
+  <meta property="og:image" content="$site_url/assets/portrait.png">
+  <link rel="icon" href="/assets/favicon.svg?v=original" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
+  <link rel="stylesheet" href="/assets/style.css">
+  <script type="application/ld+json">$person_json</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <nav aria-label="Main navigation">$navigation</nav>
+    </div>
+  </header>
+  <div class="page-shell $layout_class">
+    $profile
+    <main id="main" class="main-content">$content</main>
+  </div>
+  <footer class="site-footer">
+    <div class="visitor-map">
+      <iframe src="/assets/visitor-map.html" title="World map of visitors" width="290" height="190" loading="lazy"></iframe>
+      <a href="https://mapmyvisitors.com/">Visitor map · MapMyVisitors</a>
+    </div>
+    <div class="footer-meta"><span>© $year $name</span><a href="mailto:$email">Get in touch <span aria-hidden="true">↗</span></a></div>
+  </footer>
+</body>
+</html>
