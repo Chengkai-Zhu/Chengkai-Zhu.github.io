@@ -1,6 +1,6 @@
 # Chengkai Zhu's personal website
 
-A bespoke academic homepage for Chengkai Zhu, Research Scientist at QudeLeap. The site uses a white background, centered navigation, a portrait sidebar, and a compact research bibliography with outlined Abstract/PDF links. Page titles are direct, without promotional taglines. Research interests cover quantum algorithms, AI for quantum, AI for science, and quantum information. It is independent of Academic Pages and Jekyll, with no frontend framework or JavaScript bundle. Crimson Pro and Ubuntu Mono follow the typography of [Alexander Schmidhuber's homepage](https://www.mit.edu/~alexsc/index.html) and are served locally with their font licenses. The original favicon assets are restored from the previous website.
+A bespoke academic homepage for Chengkai Zhu, Research Scientist at QudeLeap. The site uses a white background, centered navigation, a portrait sidebar, and a compact research bibliography with outlined Abstract/PDF links. Page titles are direct, without promotional taglines. Research interests center on the limits and possibilities of quantum information processing, grounded in work on quantum communication, quantum resources, and quantum dynamics. Quantum algorithms, quantum advantage and applications, and AI for quantum and science are briefly mentioned as directions being explored. It is independent of Academic Pages and Jekyll, with no frontend framework or JavaScript bundle. Crimson Pro and Ubuntu Mono follow the typography of [Alexander Schmidhuber's homepage](https://www.mit.edu/~alexsc/index.html) and are served locally with their font licenses. The original favicon assets are restored from the previous website.
 
 ## Preview locally
 
@@ -23,7 +23,7 @@ Open `http://localhost:8000`. The build output lives in `_site/` and is not comm
 - `templates/`: shared page structure and the About, Research, Talks, and Teaching content.
 - `assets/style.css`: the complete responsive stylesheet.
 
-Every paper needs a title, ordered author list, ISO date, venue, `abstract_url`, and `pdf_url`. Optional `doi_url` and `code_url` fields produce Journal and Code links. Selected publications include the curated records and automatically verified first-author records, grouped by year and sorted by date, most recent first.
+Every paper needs a title, ordered author list, ISO date, venue, `abstract_url`, and `pdf_url`. Optional `doi_url` and `code_url` fields produce Journal and Code links. Selected publications include the curated records and automatically verified first-author records, grouped by year and sorted by date, most recent first. The Google Scholar link appears in parentheses beside the Selected publications heading.
 
 Talks uses a full-width chronological list, inspired by the [reference Talks page](https://www.mit.edu/~alexsc/talks.html): date, talk type, event, and location appear in aligned columns, with the title and venue below the event. The latest two calendar years represented in the data appear initially; older talks can be expanded using **Previous years**, a native HTML disclosure that needs no JavaScript.
 
