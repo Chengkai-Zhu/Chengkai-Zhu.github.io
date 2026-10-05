@@ -1,0 +1,93 @@
+[
+  {
+    "date": "2026-08",
+    "kind": "contributed",
+    "title": "Geometric optimization for quantum communication",
+    "event": "TQC 2026",
+    "location": "Canada"
+  },
+  {
+    "date": "2026-06",
+    "kind": "contributed",
+    "title": "Geometric optimization for quantum communication",
+    "event": "ISIT 2026",
+    "location": "Guangzhou, China"
+  },
+  {
+    "date": "2025-07",
+    "kind": "invited",
+    "title": "Riemannian optimization for Holevo capacity",
+    "event": "CQCC 2025",
+    "location": "Chengdu, China"
+  },
+  {
+    "date": "2025-06",
+    "kind": "contributed",
+    "title": "Riemannian optimization for Holevo capacity",
+    "event": "ISIT 2025",
+    "location": "Ann Arbor, USA"
+  },
+  {
+    "date": "2024-11",
+    "kind": "invited",
+    "title": "Amortized stabilizer Rényi entropy of quantum dynamics",
+    "event": "East Lake Quantum Seminar",
+    "location": "School of Mathematics and Statistics, Wuhan University, China"
+  },
+  {
+    "date": "2024-09",
+    "kind": "invited",
+    "title": "Reversing unknown quantum processes via virtual combs",
+    "event": "Seminar",
+    "location": "Academy of Mathematics and Systems Science, Chinese Academy of Sciences, China"
+  },
+  {
+    "date": "2024-09",
+    "kind": "contributed",
+    "title": "Reversing unknown quantum processes via virtual combs",
+    "event": "TQC 2024",
+    "location": "Okinawa, Japan"
+  },
+  {
+    "date": "2024-08",
+    "kind": "contributed",
+    "title": "Quantum coherence and distinguishability: a resource-theoretic perspective on wave-particle duality",
+    "event": "AQIS 2024",
+    "location": "Sapporo, Japan"
+  },
+  {
+    "date": "2024-07",
+    "kind": "contributed",
+    "title": "Entanglement cost of discriminating quantum states under locality constraints",
+    "event": "ISIT 2024",
+    "location": "Athens, Greece"
+  },
+  {
+    "date": "2024-04",
+    "kind": "contributed",
+    "title": "Reversing unknown quantum processes via virtual combs",
+    "event": "QCTiP 2024",
+    "location": "University of Edinburgh, Scotland"
+  },
+  {
+    "date": "2023-09",
+    "kind": "contributed",
+    "title": "Estimate distillable entanglement and quantum capacity by squeezing useless entanglement",
+    "event": "AQIS 2023",
+    "location": "Korea"
+  },
+  {
+    "date": "2023-07",
+    "kind": "contributed",
+    "title": "Estimate distillable entanglement and quantum capacity by squeezing useless entanglement",
+    "event": "BIID 2023",
+    "location": "University of Tübingen, Germany"
+  },
+  {
+    "date": "2022-12",
+    "kind": "contributed",
+    "title": "Optimizing the depth of quantum implementations of linear layers",
+    "event": "Inscrypt 2022",
+    "location": "Beijing, China"
+  }
+]

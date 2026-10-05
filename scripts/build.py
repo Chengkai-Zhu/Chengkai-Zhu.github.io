@@ -53,8 +53,24 @@ def grouped_publications(papers, profile):
     )
 
 
+def talk_list(talks):
+    entries = []
+    for talk in sorted(talks, key=lambda talk: talk["date"], reverse=True):
+        date = datetime.strptime(talk["date"], "%Y-%m").strftime("%b %Y")
+        entries.append(
+            '<li class="talk"><article>'
+            f'<time datetime="{esc(talk["date"])}">{date}</time>'
+            f'<h3>{esc(talk["title"])}</h3>'
+            f'<p class="talk-event">{esc(talk["event"])}</p>'
+            f'<p class="talk-location">{esc(talk["location"])}</p>'
+            '</article></li>'
+        )
+    return '<ol class="talk-list">' + "\n".join(entries) + '</ol>'
+
+
 def build(output):
     profile = load_json(ROOT / "data/profile.json")
+    talks = load_json(ROOT / "data/talks.json")
     papers = publications()
     first = [p for p in papers if is_first_author(p["authors"], profile["author_aliases"])]
     collaborations = [p for p in papers if not is_first_author(p["authors"], profile["author_aliases"])]
@@ -76,15 +92,16 @@ def build(output):
         f'<span>{esc(c["term"])}</span></p></li>' for c in profile["teaching"]
     ) + '</ul>'
     pages = {
-        "/": ("About", template("about.html", role=esc(profile["role"]), affiliation=esc(profile["affiliation"]), recent_publications=publication_list(first[:3], profile), education=education)),
+        "/": ("About", template("about.html", role=esc(profile["role"]), affiliation=esc(profile["affiliation"]), education=education)),
         "/research/": ("Research", template("research.html", scholar_url=esc(scholar), first_author_publications=grouped_publications(first, profile), collaborations=publication_list(collaborations, profile))),
+        "/talks/": ("Talks", template("talks.html", invited_talks=talk_list([talk for talk in talks if talk["kind"] == "invited"]), contributed_talks=talk_list([talk for talk in talks if talk["kind"] == "contributed"]))),
         "/teaching/": ("Teaching", template("teaching.html", courses=courses)),
         "/404.html": ("Page not found", '<div class="page-heading"><p class="eyebrow">404</p><h1>That page has moved.</h1></div><p>Visit the <a href="/">homepage</a> or browse my <a href="/research/">research</a>.</p>')
     }
     for path, (label, content) in pages.items():
         navigation = "".join(
             f'<a href="{url}"' + (' aria-current="page"' if url == path else '') + f'>{name}</a>'
-            for url, name in (("/", "About"), ("/research/", "Research"), ("/teaching/", "Teaching"))
+            for url, name in (("/", "About"), ("/research/", "Research"), ("/talks/", "Talks"), ("/teaching/", "Teaching"))
         )
         person = json.dumps({"@context": "https://schema.org", "@type": "Person", "name": profile["name"], "alternateName": profile["chinese_name"], "jobTitle": profile["role"], "worksFor": {"@type": "Organization", "name": profile["affiliation"]}, "url": profile["url"], "sameAs": [scholar, profile["github_url"]]}, ensure_ascii=False).replace("<", "\\u003c")
         rendered = template("base.html", title=esc(profile["name"] if path == "/" else f'{label} · {profile["name"]}'), description=esc(profile["description"]), canonical=esc(profile["url"] + path), site_url=esc(profile["url"]), person_json=person, navigation=navigation, content=content, scholar_url=esc(scholar), year=datetime.now().year, **{key: esc(profile[key]) for key in ("name", "chinese_name", "role", "affiliation", "email", "github_url")})
@@ -92,7 +109,7 @@ def build(output):
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(rendered, encoding="utf-8")
     # Keep useful old URLs, without retaining the old theme or placeholder pages.
-    redirects = {"/about/": "/", "/about.html": "/", "/index.html": None, "/research.html": "/research/", "/publications/": "/research/", "/publications.html": "/research/", "/teaching.html": "/teaching/", "/cv/": "/#education-heading", "/resume/": "/#education-heading", "/publication/24-QNN/": "/research/#collaborations", "/publication/24-virtualcomb/": "/research/#first-author", "/publication/2010-10-01-paper-title-number-2/": "/research/#first-author", "/publication/2015-10-01-paper-title-number-3/": "/research/#first-author"}
+    redirects = {"/about/": "/", "/about.html": "/", "/index.html": None, "/research.html": "/research/", "/publications/": "/research/", "/publications.html": "/research/", "/talks.html": "/talks/", "/teaching.html": "/teaching/", "/cv/": "/#education-heading", "/resume/": "/#education-heading", "/publication/24-QNN/": "/research/#collaborations", "/publication/24-virtualcomb/": "/research/#first-author", "/publication/2010-10-01-paper-title-number-2/": "/research/#first-author", "/publication/2015-10-01-paper-title-number-3/": "/research/#first-author"}
     for source, target in redirects.items():
         if target is None:
             continue

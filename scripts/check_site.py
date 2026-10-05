@@ -6,7 +6,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
-from common import ROOT, publications
+from common import ROOT, load_json, publications
 
 
 class Document(HTMLParser):
@@ -53,6 +53,9 @@ def check_site(output):
     for label in ("Abstract", "PDF"):
         if research.count(f'>{label}</a>') != count:
             errors.append(f"Research must have a {label} link for every publication.")
+    talks = (output / "talks/index.html").read_text(encoding="utf-8")
+    if talks.count('class="talk"') != len(load_json(ROOT / "data/talks.json")):
+        errors.append("Talks does not render every talk exactly once.")
     if errors:
         raise ValueError("\n".join(errors))
     print(f"Validated {len(pages)} HTML files, all local links and anchors, and {count} Abstract/PDF pairs.")

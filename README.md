@@ -1,6 +1,6 @@
 # Chengkai Zhu's personal website
 
-A bespoke academic homepage for Chengkai Zhu, Scientist at QudeLeap. The site uses serif typography, a portrait sidebar, and a compact research bibliography. It is independent of Academic Pages and Jekyll, with no frontend framework, JavaScript bundle, remote fonts, or third-party runtime assets.
+A bespoke academic homepage for Chengkai Zhu, Research Scientist at QudeLeap. The site uses a white background, centered navigation, a portrait sidebar, and a compact research bibliography with outlined Abstract/PDF links. It is independent of Academic Pages and Jekyll, with no frontend framework or JavaScript bundle. Crimson Pro and Ubuntu Mono match the typography of [Alex Cohen's homepage](https://www.mit.edu/~alexsc/index.html) and are served locally with their font licenses.
 
 ## Preview locally
 
@@ -19,12 +19,19 @@ Open `http://localhost:8000`. The build output lives in `_site/` and is not comm
 - `data/profile.json`: identity, contact details, education, and teaching.
 - `data/publications.json`: curated papers, publication metadata, and selected collaborations.
 - `data/synced_publications.json`: automatically discovered first-author papers.
-- `templates/`: shared page structure and the About, Research, and Teaching content.
+- `data/talks.json`: invited and contributed talks, sorted by date within each section; see [source notes](docs/talk-sources.md).
+- `templates/`: shared page structure and the About, Research, Talks, and Teaching content.
 - `assets/style.css`: the complete responsive stylesheet.
 
 Every paper needs a title, ordered author list, ISO date, venue, `abstract_url`, and `pdf_url`. Optional `doi_url` and `code_url` fields produce Journal and Code links. Papers are grouped by year and sorted by date, most recent first. Only the first author is used to determine inclusion in the first-author section; other contributions can be curated separately.
 
 Curated metadata takes precedence over automatic metadata, while a verified journal record is never replaced by a preprint record. Existing publications are retained when an upstream source omits them. Important old URLs redirect to their new equivalents.
+
+## Visitor map
+
+The footer retains the original MapMyVisitors widget and its existing public widget ID, preserving the association with the previous site's statistics. It is loaded inside a small, lazy-loaded frame so the third-party script cannot delay the main page or affect its styles. The embed is in `assets/visitor-map.html`; its availability depends on MapMyVisitors. The provider's script timed out during local verification on October 5, 2026, so live map rendering and historical statistics have not been confirmed.
+
+For detailed traffic analysis, [Umami](https://docs.umami.is/docs) supports pageviews, referrers, and locations. It can complement the visible visitor map; it is not configured in this repository.
 
 ## Monthly publication sync
 
@@ -56,4 +63,4 @@ GitHub may delay scheduled jobs, and public-repository schedules can be disabled
 
 ## License
 
-The original MIT license notice is retained in `LICENSE`.
+The original MIT license notice is retained in `LICENSE`. The bundled fonts retain their separate licenses in `assets/fonts/`.

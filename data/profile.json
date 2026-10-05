@@ -1,7 +1,7 @@
 {
   "name": "Chengkai Zhu",
   "chinese_name": "朱成开",
-  "role": "Scientist",
+  "role": "Research Scientist",
   "affiliation": "QudeLeap",
   "email": "zhuchengkai7@gmail.com",
   "url": "https://chengkaizhu.site",
@@ -9,7 +9,7 @@
   "author_aliases": ["Chengkai Zhu", "C Zhu", "Zhu Chengkai", "朱成开"],
   "arxiv_author": "Chengkai_Zhu",
   "github_url": "https://github.com/Chengkai-Zhu",
-  "description": "Chengkai Zhu is a scientist at QudeLeap working on quantum information theory, quantum communication, and quantum resources.",
+  "description": "Chengkai Zhu is a Research Scientist at QudeLeap working on quantum information theory, quantum communication, and quantum resources.",
   "education": [
     {
       "institution": "The Hong Kong University of Science and Technology (Guangzhou)",
