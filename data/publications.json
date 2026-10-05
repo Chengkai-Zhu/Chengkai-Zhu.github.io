@@ -182,19 +182,5 @@
     "kind": "published",
     "abstract_url": "https://arxiv.org/abs/2303.07228",
     "pdf_url": "https://arxiv.org/pdf/2303.07228"
-  },
-  {
-    "title": "Exponential Hardness of Optimization from the Locality in Quantum Neural Networks",
-    "authors": [
-      "Hao-Kai Zhang",
-      "Chengkai Zhu",
-      "Geng Liu",
-      "Xin Wang"
-    ],
-    "date": "2024-03-24",
-    "venue": "AAAI 2024",
-    "kind": "published",
-    "abstract_url": "https://arxiv.org/abs/2205.05056",
-    "pdf_url": "https://arxiv.org/pdf/2205.05056"
   }
 ]

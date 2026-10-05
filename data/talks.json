@@ -32,14 +32,16 @@
     "kind": "invited",
     "title": "Amortized stabilizer Rényi entropy of quantum dynamics",
     "event": "East Lake Quantum Seminar",
-    "location": "School of Mathematics and Statistics, Wuhan University, China"
+    "venue": "School of Mathematics and Statistics, Wuhan University",
+    "location": "Wuhan, China"
   },
   {
     "date": "2024-09",
     "kind": "invited",
     "title": "Reversing unknown quantum processes via virtual combs",
     "event": "Seminar",
-    "location": "Academy of Mathematics and Systems Science, Chinese Academy of Sciences, China"
+    "venue": "Academy of Mathematics and Systems Science, Chinese Academy of Sciences",
+    "location": "China"
   },
   {
     "date": "2024-09",
@@ -67,7 +69,8 @@
     "kind": "contributed",
     "title": "Reversing unknown quantum processes via virtual combs",
     "event": "QCTiP 2024",
-    "location": "University of Edinburgh, Scotland"
+    "venue": "University of Edinburgh",
+    "location": "Scotland"
   },
   {
     "date": "2023-09",
@@ -81,7 +84,8 @@
     "kind": "contributed",
     "title": "Estimate distillable entanglement and quantum capacity by squeezing useless entanglement",
     "event": "BIID 2023",
-    "location": "University of Tübingen, Germany"
+    "venue": "University of Tübingen",
+    "location": "Germany"
   },
   {
     "date": "2022-12",

@@ -57,11 +57,14 @@ def talk_list(talks):
     entries = []
     for talk in sorted(talks, key=lambda talk: talk["date"], reverse=True):
         date = datetime.strptime(talk["date"], "%Y-%m").strftime("%b %Y")
+        kind = {"invited": "Invited Talk", "contributed": "Contributed Talk"}[talk["kind"]]
+        venue = f'<p class="talk-venue">{esc(talk["venue"])}</p>' if talk.get("venue") else ""
         entries.append(
-            '<li class="talk"><article>'
-            f'<time datetime="{esc(talk["date"])}">{date}</time>'
-            f'<h3>{esc(talk["title"])}</h3>'
-            f'<p class="talk-event">{esc(talk["event"])}</p>'
+            '<li class="talk"><article class="talk-row">'
+            f'<time class="talk-date" datetime="{esc(talk["date"])}">{date}</time>'
+            f'<span class="talk-type">{kind}</span>'
+            f'<div class="talk-content"><h2 class="talk-event">{esc(talk["event"])}</h2>'
+            f'{venue}<p class="talk-title">{esc(talk["title"])}</p></div>'
             f'<p class="talk-location">{esc(talk["location"])}</p>'
             '</article></li>'
         )
@@ -72,8 +75,9 @@ def build(output):
     profile = load_json(ROOT / "data/profile.json")
     talks = load_json(ROOT / "data/talks.json")
     papers = publications()
-    first = [p for p in papers if is_first_author(p["authors"], profile["author_aliases"])]
-    collaborations = [p for p in papers if not is_first_author(p["authors"], profile["author_aliases"])]
+    talk_cutoff = max((int(talk["date"][:4]) for talk in talks), default=0) - 1
+    recent_talks = [talk for talk in talks if int(talk["date"][:4]) >= talk_cutoff]
+    previous_talks = [talk for talk in talks if int(talk["date"][:4]) < talk_cutoff]
     output.mkdir(parents=True, exist_ok=True)
     shutil.copytree(ROOT / "assets", output / "assets", dirs_exist_ok=True)
     shutil.copyfile(ROOT / "CNAME", output / "CNAME")
@@ -93,23 +97,25 @@ def build(output):
     ) + '</ul>'
     pages = {
         "/": ("About", template("about.html", role=esc(profile["role"]), affiliation=esc(profile["affiliation"]), education=education)),
-        "/research/": ("Research", template("research.html", scholar_url=esc(scholar), first_author_publications=grouped_publications(first, profile), collaborations=publication_list(collaborations, profile))),
-        "/talks/": ("Talks", template("talks.html", invited_talks=talk_list([talk for talk in talks if talk["kind"] == "invited"]), contributed_talks=talk_list([talk for talk in talks if talk["kind"] == "contributed"]))),
+        "/research/": ("Research", template("research.html", scholar_url=esc(scholar), selected_publications=grouped_publications(papers, profile))),
+        "/talks/": ("Talks", template("talks.html", recent_talks=talk_list(recent_talks), previous_talks=talk_list(previous_talks))),
         "/teaching/": ("Teaching", template("teaching.html", courses=courses)),
         "/404.html": ("Page not found", '<div class="page-heading"><p class="eyebrow">404</p><h1>That page has moved.</h1></div><p>Visit the <a href="/">homepage</a> or browse my <a href="/research/">research</a>.</p>')
     }
+    identity = {key: esc(profile[key]) for key in ("name", "chinese_name", "role", "affiliation", "email", "github_url")}
+    sidebar = template("profile.html", scholar_url=esc(scholar), **identity)
     for path, (label, content) in pages.items():
         navigation = "".join(
             f'<a href="{url}"' + (' aria-current="page"' if url == path else '') + f'>{name}</a>'
             for url, name in (("/", "About"), ("/research/", "Research"), ("/talks/", "Talks"), ("/teaching/", "Teaching"))
         )
         person = json.dumps({"@context": "https://schema.org", "@type": "Person", "name": profile["name"], "alternateName": profile["chinese_name"], "jobTitle": profile["role"], "worksFor": {"@type": "Organization", "name": profile["affiliation"]}, "url": profile["url"], "sameAs": [scholar, profile["github_url"]]}, ensure_ascii=False).replace("<", "\\u003c")
-        rendered = template("base.html", title=esc(profile["name"] if path == "/" else f'{label} · {profile["name"]}'), description=esc(profile["description"]), canonical=esc(profile["url"] + path), site_url=esc(profile["url"]), person_json=person, navigation=navigation, content=content, scholar_url=esc(scholar), year=datetime.now().year, **{key: esc(profile[key]) for key in ("name", "chinese_name", "role", "affiliation", "email", "github_url")})
+        rendered = template("base.html", title=esc(profile["name"] if path == "/" else f'{label} · {profile["name"]}'), description=esc(profile["description"]), canonical=esc(profile["url"] + path), site_url=esc(profile["url"]), person_json=person, navigation=navigation, content=content, profile="" if path == "/talks/" else sidebar, layout_class="page-shell--wide" if path == "/talks/" else "", year=datetime.now().year, **identity)
         destination = output / (path.lstrip("/") if path.endswith(".html") else path.lstrip("/") + "index.html")
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(rendered, encoding="utf-8")
     # Keep useful old URLs, without retaining the old theme or placeholder pages.
-    redirects = {"/about/": "/", "/about.html": "/", "/index.html": None, "/research.html": "/research/", "/publications/": "/research/", "/publications.html": "/research/", "/talks.html": "/talks/", "/teaching.html": "/teaching/", "/cv/": "/#education-heading", "/resume/": "/#education-heading", "/publication/24-QNN/": "/research/#collaborations", "/publication/24-virtualcomb/": "/research/#first-author", "/publication/2010-10-01-paper-title-number-2/": "/research/#first-author", "/publication/2015-10-01-paper-title-number-3/": "/research/#first-author"}
+    redirects = {"/about/": "/", "/about.html": "/", "/index.html": None, "/research.html": "/research/", "/publications/": "/research/", "/publications.html": "/research/", "/talks.html": "/talks/", "/teaching.html": "/teaching/", "/cv/": "/#education-heading", "/resume/": "/#education-heading", "/publication/24-QNN/": "/research/", "/publication/24-virtualcomb/": "/research/#first-author", "/publication/2010-10-01-paper-title-number-2/": "/research/#first-author", "/publication/2015-10-01-paper-title-number-3/": "/research/#first-author"}
     for source, target in redirects.items():
         if target is None:
             continue
@@ -118,7 +124,7 @@ def build(output):
         destination.write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url={target}"><link rel="canonical" href="{esc(profile["url"] + target)}"><title>Page moved · {esc(profile["name"])}</title></head><body><a href="{target}">Continue to {esc(target)}</a></body></html>\n', encoding="utf-8")
     (output / "robots.txt").write_text(f'User-agent: *\nAllow: /\nSitemap: {profile["url"]}/sitemap.xml\n', encoding="utf-8")
     (output / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + "".join(f'<url><loc>{esc(profile["url"] + path)}</loc></url>' for path in pages if path != "/404.html") + '</urlset>\n', encoding="utf-8")
-    print(f"Built {len(pages)} pages, {len(first)} first-author papers, and {len(collaborations)} collaborations in {output}.")
+    print(f"Built {len(pages)} pages, {len(papers)} selected publications, and {len(talks)} talks in {output}.")
 
 
 if __name__ == "__main__":
