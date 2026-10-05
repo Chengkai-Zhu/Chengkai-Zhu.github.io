@@ -32,12 +32,13 @@ class Client:
     def get(self, url):
         host = urllib.parse.urlparse(url).hostname
         interval = 3.1 if host and host.endswith("arxiv.org") else 1.1
-        pause = interval - (time.monotonic() - self.last_request.get(host, 0))
+        service = "arxiv" if host and host.endswith("arxiv.org") else host
+        pause = interval - (time.monotonic() - self.last_request.get(service, 0))
         if pause > 0:
             time.sleep(pause)
         for attempt in range(2):
             try:
-                self.last_request[host] = time.monotonic()
+                self.last_request[service] = time.monotonic()
                 request = urllib.request.Request(url, headers={"User-Agent": self.agent})
                 with urllib.request.urlopen(request, timeout=25) as response:
                     return response.read().decode("utf-8")
