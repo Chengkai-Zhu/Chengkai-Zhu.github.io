@@ -1,4 +1,0 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" fill="#2c3e50">
-  <!-- A single path defines the 'C' and then the 'Z' cutout. 'fill-rule: evenodd' makes the inner shape a hole. -->
-  <path d="M80,15 A40,40 0 1,0 80,85 L68,85 A28,28 0 1,1 68,15 Z M30,30 L30,38 L62,38 L30,62 L30,70 L70,70 L70,62 L38,62 L70,38 L70,30 Z"/>
-</svg>

@@ -1,89 +1,59 @@
-# Academic Pages
-**Academic Pages is a GitHub Pages template for personal and professional portfolio-oriented websites.**
+# Chengkai Zhu's personal website
 
-![Academic Pages template example](images/homepage.png "Academic Pages template example")
+A bespoke academic homepage for Chengkai Zhu, Scientist at QudeLeap. The site uses serif typography, a portrait sidebar, and a compact research bibliography. It is independent of Academic Pages and Jekyll, with no frontend framework, JavaScript bundle, remote fonts, or third-party runtime assets.
 
-# Getting Started
+## Preview locally
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Click the "Use this template" button in the top right.
-1. On the "New repository" page, enter your repository name as "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and add your content.
-1. Upload any files (like PDFs, .zip files, etc.) to the `files/` directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+Building the website requires Python 3.9 or newer and no packages:
 
-See more info at https://academicpages.github.io/
-
-## Running locally
-
-When you are initially working your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:
-
-1. Clone the repository and made updates as detailed above.
-1. Make sure you have ruby-dev, bundler, and nodejs installed
-    
-    On most Linux distribution and [Windows Subsystem Linux](https://learn.microsoft.com/en-us/windows/wsl/about) the command is:
-    ```bash
-    sudo apt install ruby-dev ruby-bundler nodejs
-    ```
-    If you see error `Unable to locate package ruby-bundler`, `Unable to locate package nodejs `, run the following:
-    ```bash
-    sudo apt update && sudo apt upgrade -y
-    ```
-    then try run `sudo apt install ruby-dev ruby-bundler nodejs` again.
-
-    On MacOS the commands are:
-    ```bash
-    brew install ruby
-    brew install node
-    gem install bundler
-    ```
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-
-    If you see file permission error like `Fetching bundler-2.6.3.gem ERROR:  While executing gem (Gem::FilePermissionError) You don't have write permissions for the /var/lib/gems/3.2.0 directory.` or `Bundler::PermissionError: There was an error while trying to write to /usr/local/bin.`
-    Install Gems Locally (Recommended):
-    ```bash
-    bundle config set --local path 'vendor/bundle'
-    ```
-    then try run `bundle install` again. If succeeded, you should see a folder called `vendor` and open `.gitignore` then add `vendor` inside it.
-
-1. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
-    You may also try `bundle exec jekyll serve -l -H localhost` to ensure jekyll to use specific dependencies on your own local machine.
-
-If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essential gcc make`
-
-## Using Docker
-
-Working from a different OS, or just want to avoid installing dependencies? You can use the provided `Dockerfile` to build a container that will run the site for you if you have [Docker](https://www.docker.com/) installed.
-
-You can build and execute the container by running the following command in the repository:
-
-```bash
-docker compose up
+```sh
+python3 scripts/build.py
+python3 scripts/check_site.py
+python3 -m http.server 8000 --directory _site
 ```
 
-You should now be able to access the website from `localhost:4000`.
+Open `http://localhost:8000`. The build output lives in `_site/` and is not committed.
 
-# Maintenance
+## Edit content
 
-Bug reports and feature requests to the template should be [submitted via GitHub](https://github.com/academicpages/academicpages.github.io/issues/new/choose). For questions concerning how to style the template, please feel free to start a [new discussion on GitHub](https://github.com/academicpages/academicpages.github.io/discussions).
+- `data/profile.json`: identity, contact details, education, and teaching.
+- `data/publications.json`: curated papers, publication metadata, and selected collaborations.
+- `data/synced_publications.json`: automatically discovered first-author papers.
+- `templates/`: shared page structure and the About, Research, and Teaching content.
+- `assets/style.css`: the complete responsive stylesheet.
 
-This repository was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License (see LICENSE.md). It is currently being maintained by [Robert Zupko](https://github.com/rjzupkoii) and additional maintainers would be welcomed.
+Every paper needs a title, ordered author list, ISO date, venue, `abstract_url`, and `pdf_url`. Optional `doi_url` and `code_url` fields produce Journal and Code links. Papers are grouped by year and sorted by date, most recent first. Only the first author is used to determine inclusion in the first-author section; other contributions can be curated separately.
 
-## Bugfixes and enhancements
+Curated metadata takes precedence over automatic metadata, while a verified journal record is never replaced by a preprint record. Existing publications are retained when an upstream source omits them. Important old URLs redirect to their new equivalents.
 
-If you have bugfixes and enhancements that you would like to submit as a pull request, you will need to [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repository as opposed to using it as a template. This will also allow you to [synchronize your copy](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) of template to your fork as well.
+## Monthly publication sync
 
-Unfortunately, one logistical issue with a template theme like Academic Pages that makes it a little tricky to get bug fixes and updates to the core theme. If you use this template and customize it, you will probably get merge conflicts if you attempt to synchronize. If you want to save your various .yml configuration files and markdown files, you can delete the repository and fork it again. Or you can manually patch.
+The `Build and deploy homepage` GitHub Actions workflow runs on the first of every month at **09:17 Asia/Shanghai** (01:17 UTC). Manual runs can enable the **Update first-author publications before deployment** checkbox; a manual build without syncing works even while external sources are unavailable. Each scheduled sync fetches the public Google Scholar profile `2c0ZBk8AAAAJ`, verifies the full author order, checks arXiv, merges new first-author records, validates the website, commits the data with an English message, and deploys the result in the same workflow.
 
----
-<div align="center">
-    
-![pages-build-deployment](https://github.com/academicpages/academicpages.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
-[![GitHub contributors](https://img.shields.io/github/contributors/academicpages/academicpages.github.io.svg)](https://github.com/academicpages/academicpages.github.io/graphs/contributors)
-[![GitHub release](https://img.shields.io/github/v/release/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/releases/latest)
-[![GitHub license](https://img.shields.io/github/license/academicpages/academicpages.github.io?color=blue)](https://github.com/academicpages/academicpages.github.io/blob/master/LICENSE)
+Google Scholar can block automated requests; it has no public publication API suitable for this integration. The script uses arXiv as an independent fallback and records which source succeeded in `data/sync_status.json`. An arXiv fallback is **not** a successful Scholar sync and will not discover papers available only on Scholar. If both sources fail, the run fails without replacing the publication data or the live site. Papers without a verified PDF link are listed in the sync report for manual completion rather than receiving a fabricated link.
 
-[![GitHub stars](https://img.shields.io/github/stars/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io)
-[![GitHub forks](https://img.shields.io/github/forks/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/fork)
-</div>
+To sync locally:
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python scripts/sync_publications.py --dry-run
+.venv/bin/python scripts/sync_publications.py
+.venv/bin/python -m unittest discover -s tests -v
+```
+
+The default public-page/arXiv mode requires no API key. For Scholar access through a supported API provider, optionally add a `SERPAPI_API_KEY` repository secret in **Settings → Secrets and variables → Actions**. The sync then retrieves the same Scholar pages through the [Google Scholar Author API](https://serpapi.com/google-scholar-author-api), including citation details and full author order. This requires a SerpApi account and sufficient API quota; no account, plan, or secret was created by this refactor. Without that secret, direct Scholar access remains subject to Google's automated-access restrictions.
+
+Joint first authors are automatically included only when Chengkai is listed first; equal-contribution papers in a different author position can be added to the curated file after verification.
+
+## GitHub Pages
+
+See [deployment notes](docs/deployment.md). The custom domain remains `chengkaizhu.site`.
+
+The workflow deliberately deploys after the automated data commit: commits made using `GITHUB_TOKEN` do not trigger another Pages build. See [GitHub's token documentation](https://docs.github.com/en/actions/concepts/security/github_token).
+
+GitHub may delay scheduled jobs, and public-repository schedules can be disabled after 60 days of inactivity. The monthly sync writes its check timestamp whenever at least one source succeeds, making successful checks visible in Git history. If all sources keep failing, inspect Actions and re-enable the schedule if GitHub disables it. See [scheduled workflow documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
+
+## License
+
+The original MIT license notice is retained in `LICENSE`.
