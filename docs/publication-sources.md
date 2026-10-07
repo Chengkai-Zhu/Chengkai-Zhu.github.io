@@ -7,6 +7,7 @@ The initial bibliography was reconciled against the existing personal site, the 
 - [Quantum Channel Stein Theorem beyond Definite Causal Order](https://arxiv.org/abs/2609.30268).
 - [Private communication via zero-private-capacity quantum channels](https://arxiv.org/abs/2609.10520).
 - [Quantum Incapacity beyond No-Cloning and PPT Mechanisms](https://arxiv.org/abs/2607.24693).
+- [Lean-QIT: Towards a Formal Infrastructure for Quantum Information Theory](https://arxiv.org/abs/2607.09632) and its [code repository](https://github.com/QuAIR/Lean-QIT): title, full author order, July 10, 2026 submission date, and paper/code links verified against the primary sources on October 8, 2026.
 - [Simulation of Adjoints and Petz Recovery Maps for Unknown Quantum Channels](https://arxiv.org/abs/2602.05828).
 - [Optimal Hamiltonian recognition of unknown quantum dynamics](https://www.nature.com/articles/s41534-026-01182-6) and its [arXiv version](https://arxiv.org/abs/2412.13067).
 - [Geometric optimization for quantum communication](https://arxiv.org/abs/2509.15106).

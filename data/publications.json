@@ -36,6 +36,26 @@
     "pdf_url": "https://arxiv.org/pdf/2607.24693"
   },
   {
+    "title": "Lean-QIT: Towards a Formal Infrastructure for Quantum Information Theory",
+    "authors": [
+      "Chengkai Zhu",
+      "Ziao Tang",
+      "Guocheng Zhen",
+      "Yimeng Cao",
+      "Yusheng Zhao",
+      "Ranyiliu Chen",
+      "Xuanqiang Zhao",
+      "Lei Zhang",
+      "Xin Wang"
+    ],
+    "date": "2026-07-10",
+    "venue": "arXiv:2607.09632 (2026)",
+    "kind": "preprint",
+    "abstract_url": "https://arxiv.org/abs/2607.09632",
+    "pdf_url": "https://arxiv.org/pdf/2607.09632",
+    "code_url": "https://github.com/QuAIR/Lean-QIT"
+  },
+  {
     "title": "Simulation of Adjoints and Petz Recovery Maps for Unknown Quantum Channels",
     "authors": [
       "Chengkai Zhu",
