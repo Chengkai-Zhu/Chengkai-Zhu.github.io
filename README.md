@@ -2,7 +2,9 @@
 
 Personal website of Chengkai Zhu, Research Scientist at QudeLeap: [chengkaizhu.site](https://chengkaizhu.site).
 
-A custom static site with About, Research, Talks, and Teaching pages. Built with Python, HTML, and CSS. Fonts are hosted locally; the original visitor map is preserved.
+A custom static site with About, Research, Talks, and Teaching pages. Built with Python, HTML, CSS, and vanilla JavaScript. Fonts are hosted locally; the original visitor map is preserved.
+
+The top-right control switches between light and dark themes and remembers the choice. The initial theme follows the system. A soft glow follows the pointer on desktop, with reduced-motion preferences respected.
 
 ## Local preview
 
