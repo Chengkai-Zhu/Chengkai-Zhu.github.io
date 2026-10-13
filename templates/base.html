@@ -18,8 +18,8 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon-180x180.png" sizes="180x180">
   <link rel="preload" href="/assets/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/fonts/fonts.css">
-  <script src="/assets/appearance.js"></script>
-  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/assets/appearance.js?v=$appearance_version"></script>
+  <link rel="stylesheet" href="/assets/style.css?v=$style_version">
   <script type="application/ld+json">$person_json</script>
 </head>
 <body>
@@ -30,20 +30,22 @@
       <nav aria-label="Main navigation">$navigation</nav>
     </div>
   </header>
-  <button class="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false" title="Switch to dark mode" hidden>
-    <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5a8.5 8.5 0 1 0 9.5 9.5Z"/></svg>
-    <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-  </button>
   <div class="page-shell $layout_class">
     $profile
     <main id="main" class="main-content">$content</main>
   </div>
   <footer class="site-footer">
-    <div class="visitor-map">
-      <iframe src="/assets/visitor-map.html" title="World map of visitors" width="290" height="190" loading="lazy"></iframe>
-      <a href="https://mapmyvisitors.com/">Visitor map · MapMyVisitors</a>
-    </div>
     <div class="footer-meta"><span>© $year $name</span><a href="mailto:$email">Get in touch <span aria-hidden="true">↗</span></a></div>
+    <div class="floating-tools">
+      <button class="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false" title="Switch to dark mode" hidden>
+        <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5a8.5 8.5 0 1 0 9.5 9.5Z"/></svg>
+        <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <aside class="visitor-globe" aria-label="Visitor globe">
+        <iframe src="/assets/visitor-globe.html?v=$globe_version" title="Globe Widget · visitor locations" width="128" height="145" loading="lazy"></iframe>
+        <a href="https://mapmyvisitors.com/web/1bzmo" title="View visitor statistics">Visitor globe</a>
+      </aside>
+    </div>
   </footer>
 </body>
 </html>

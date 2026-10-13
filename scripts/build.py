@@ -2,6 +2,7 @@
 """Build the complete static website using only the Python standard library."""
 
 import argparse
+import hashlib
 import html
 import json
 import shutil
@@ -19,6 +20,10 @@ def esc(value):
 def template(filename, **values):
     source = (ROOT / "templates" / filename).read_text(encoding="utf-8")
     return Template(source).substitute(values)
+
+
+def asset_version(filename):
+    return hashlib.sha256((ROOT / "assets" / filename).read_bytes()).hexdigest()[:12]
 
 
 def publication_list(papers, profile):
@@ -106,13 +111,14 @@ def build(output):
     }
     identity = {key: esc(profile[key]) for key in ("name", "chinese_name", "role", "affiliation", "email", "github_url")}
     sidebar = template("profile.html", scholar_url=esc(scholar), **identity)
+    versions = {"style_version": asset_version("style.css"), "appearance_version": asset_version("appearance.js"), "globe_version": asset_version("visitor-globe.html")}
     for path, (label, content) in pages.items():
         navigation = "".join(
             f'<a href="{url}"' + (' aria-current="page"' if url == path else '') + f'>{name}</a>'
             for url, name in (("/", "About"), ("/research/", "Research"), ("/talks/", "Talks"), ("/teaching/", "Teaching"))
         )
         person = json.dumps({"@context": "https://schema.org", "@type": "Person", "name": profile["name"], "alternateName": profile["chinese_name"], "jobTitle": profile["role"], "worksFor": {"@type": "Organization", "name": profile["affiliation"]}, "url": profile["url"], "sameAs": [scholar, profile["github_url"]]}, ensure_ascii=False).replace("<", "\\u003c")
-        rendered = template("base.html", title=esc(profile["name"] if path == "/" else f'{label} · {profile["name"]}'), description=esc(profile["description"]), canonical=esc(profile["url"] + path), site_url=esc(profile["url"]), person_json=person, navigation=navigation, content=content, profile="" if path == "/talks/" else sidebar, layout_class="page-shell--wide" if path == "/talks/" else "", year=datetime.now().year, **identity)
+        rendered = template("base.html", title=esc(profile["name"] if path == "/" else f'{label} · {profile["name"]}'), description=esc(profile["description"]), canonical=esc(profile["url"] + path), site_url=esc(profile["url"]), person_json=person, navigation=navigation, content=content, profile="" if path == "/talks/" else sidebar, layout_class="page-shell--wide" if path == "/talks/" else "", year=datetime.now().year, **identity, **versions)
         destination = output / (path.lstrip("/") if path.endswith(".html") else path.lstrip("/") + "index.html")
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(rendered, encoding="utf-8")
