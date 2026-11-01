@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-11-01T07:34:01+00:00",
+  "sources": {
+    "arxiv": {
+      "state": "success",
+      "first_author_papers": 15
+    },
+    "google_scholar": {
+      "state": "failed",
+      "reason": "scholar.google.com rejected automated access (HTTP 403)."
+    }
+  },
+  "pending": [],
+  "synced_first_author_papers": 12
+}

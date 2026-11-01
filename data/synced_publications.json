@@ -1,1 +1,185 @@
-[]
+[
+  {
+    "title": "Quantum Channel Stein Theorem beyond Definite Causal Order",
+    "authors": [
+      "Chengkai Zhu",
+      "Xin Wang"
+    ],
+    "date": "2026-09-24",
+    "venue": "arXiv:2609.30268 (2026)",
+    "kind": "preprint",
+    "abstract_url": "https://arxiv.org/abs/2609.30268",
+    "pdf_url": "https://arxiv.org/pdf/2609.30268",
+    "source": "arxiv"
+  },
+  {
+    "title": "Private communication via zero-private-capacity quantum channels",
+    "authors": [
+      "Chengkai Zhu",
+      "Xin Wang"
+    ],
+    "date": "2026-09-09",
+    "venue": "arXiv:2609.10520 (2026)",
+    "kind": "preprint",
+    "abstract_url": "https://arxiv.org/abs/2609.10520",
+    "pdf_url": "https://arxiv.org/pdf/2609.10520",
+    "source": "arxiv"
+  },
+  {
+    "title": "The Min-Rains Relative Entropy Is Not Tight for Exact PPT Entanglement Distillation",
+    "authors": [
+      "Chengkai Zhu",
+      "Xin Wang"
+    ],
+    "date": "2026-08-12",
+    "venue": "arXiv:2608.12135 (2026)",
+    "kind": "preprint",
+    "abstract_url": "https://arxiv.org/abs/2608.12135",
+    "pdf_url": "https://arxiv.org/pdf/2608.12135",
+    "source": "arxiv"
+  },
+  {
+    "title": "Quantum incapacity from observable shadows",
+    "authors": [
+      "Chengkai Zhu",
+      "Xin Wang"
+    ],
+    "date": "2026-07-27",
+    "venue": "arXiv:2607.24693 (2026)",
+    "kind": "preprint",
+    "abstract_url": "https://arxiv.org/abs/2607.24693",
+    "pdf_url": "https://arxiv.org/pdf/2607.24693",
+    "source": "arxiv"
+  },
+  {
+    "title": "Lean-QIT: Towards a Formal Infrastructure for Quantum Information Theory",
+    "authors": [
+      "Chengkai Zhu",
+      "Ziao Tang",
+      "Guocheng Zhen",
+      "Yimeng Cao",
+      "Yusheng Zhao",
+      "Ranyiliu Chen",
+      "Xuanqiang Zhao",
+      "Lei Zhang",
+      "Xin Wang"
+    ],
+    "date": "2026-07-10",
+    "venue": "arXiv:2607.09632 (2026)",
+    "kind": "preprint",
+    "abstract_url": "https://arxiv.org/abs/2607.09632",
+    "pdf_url": "https://arxiv.org/pdf/2607.09632",
+    "source": "arxiv"
+  },
+  {
+    "title": "Simulation of Adjoints and Petz Recovery Maps for Unknown Quantum Channels",
+    "authors": [
+      "Chengkai Zhu",
+      "Ziao Tang",
+      "Guocheng Zhen",
+      "Yinan Li",
+      "Ge Bai",
+      "Xin Wang"
+    ],
+    "date": "2026-02-05",
+    "venue": "arXiv:2602.05828 (2026)",
+    "kind": "preprint",
+    "abstract_url": "https://arxiv.org/abs/2602.05828",
+    "pdf_url": "https://arxiv.org/pdf/2602.05828",
+    "source": "arxiv"
+  },
+  {
+    "title": "Geometric optimization for quantum communication",
+    "authors": [
+      "Chengkai Zhu",
+      "Hongyu Mao",
+      "Kun Fang",
+      "Xin Wang"
+    ],
+    "date": "2025-09-18",
+    "venue": "arXiv:2509.15106 (2025)",
+    "kind": "preprint",
+    "abstract_url": "https://arxiv.org/abs/2509.15106",
+    "pdf_url": "https://arxiv.org/pdf/2509.15106",
+    "source": "arxiv"
+  },
+  {
+    "title": "Optimal Hamiltonian recognition of unknown quantum dynamics",
+    "authors": [
+      "Chengkai Zhu",
+      "Shuyu He",
+      "Yu-Ao Chen",
+      "Lei Zhang",
+      "Xin Wang"
+    ],
+    "date": "2024-12-17",
+    "venue": "npj Quantum Inf 12, 36 (2026)",
+    "kind": "published",
+    "abstract_url": "https://arxiv.org/abs/2412.13067",
+    "pdf_url": "https://arxiv.org/pdf/2412.13067",
+    "source": "arxiv",
+    "doi_url": "https://doi.org/10.1038/s41534-026-01182-6"
+  },
+  {
+    "title": "Classical communication cost of a bipartite quantum channel assisted by non-signalling correlations",
+    "authors": [
+      "Chengkai Zhu",
+      "Xuanqiang Zhao",
+      "Xin Wang"
+    ],
+    "date": "2024-08-05",
+    "venue": "IEEE Transactions on Information Theory, vol. 71, no. 8, pp. 6041-6060, Aug. 2025",
+    "kind": "published",
+    "abstract_url": "https://arxiv.org/abs/2408.02506",
+    "pdf_url": "https://arxiv.org/pdf/2408.02506",
+    "source": "arxiv",
+    "doi_url": "https://doi.org/10.1109/TIT.2025.3568528"
+  },
+  {
+    "title": "Reversing Unknown Quantum Processes via Virtual Combs for Channels with Limited Information",
+    "authors": [
+      "Chengkai Zhu",
+      "Yin Mo",
+      "Yu-Ao Chen",
+      "Xin Wang"
+    ],
+    "date": "2024-01-09",
+    "venue": "Phys. Rev. Lett. 133, 030801 (2024)",
+    "kind": "published",
+    "abstract_url": "https://arxiv.org/abs/2401.04672",
+    "pdf_url": "https://arxiv.org/pdf/2401.04672",
+    "source": "arxiv",
+    "doi_url": "https://doi.org/10.1103/PhysRevLett.133.030801"
+  },
+  {
+    "title": "Limitations of Classically-Simulable Measurements for Quantum State Discrimination",
+    "authors": [
+      "Chengkai Zhu",
+      "Zhiping Liu",
+      "Chenghong Zhu",
+      "Xin Wang"
+    ],
+    "date": "2023-10-17",
+    "venue": "Phys. Rev. Lett. 133, 010202 (2024)",
+    "kind": "published",
+    "abstract_url": "https://arxiv.org/abs/2310.11323",
+    "pdf_url": "https://arxiv.org/pdf/2310.11323",
+    "source": "arxiv",
+    "doi_url": "https://doi.org/10.1103/PhysRevLett.133.010202"
+  },
+  {
+    "title": "Estimate distillable entanglement and quantum capacity by squeezing useless entanglement",
+    "authors": [
+      "Chengkai Zhu",
+      "Chenghong Zhu",
+      "Xin Wang"
+    ],
+    "date": "2023-03-13",
+    "venue": "IEEE Journal on Selected Areas in Communications (Volume: 42, Issue: 7, July 2024)",
+    "kind": "published",
+    "abstract_url": "https://arxiv.org/abs/2303.07228",
+    "pdf_url": "https://arxiv.org/pdf/2303.07228",
+    "source": "arxiv",
+    "doi_url": "https://doi.org/10.1109/JSAC.2024.3380081"
+  }
+]
